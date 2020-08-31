@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <h1>Bejelentkezés</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post" novalidate>
+  {% csrf_token %}
+  
+  {% include 'includes/form.html' %}
+
+  
+  
+  <button type="submit" class="btn btn-success">Feltöltés</button>
+
+</form>
+<br>
+<h5 style="color:crimson">{{ error_message }}</h5> <br> 
+{% endblock %}
+
+{% block content1 %} 
+      <h2>Leirás információ</h2>
+      {% for compy in companies %}       
+        {{ compy.name }} {{ compy.email }} {{ compy.wday }} <br>         
+      {% endfor %}
+      
+{% endblock %}

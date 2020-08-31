@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Start a New Company{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="#">{{ name }}</a></li>
+  <li class="breadcrumb-item active">Műszaki Vezető Regisztráció: </li>
+{% endblock %}
+
+{% block content %}
+
+<form method="post" novalidate>
+  {% csrf_token %}    
+  {% include 'includes/form.html' %}    
+  <button type="submit" class="btn btn-success">Regisztráció</button>
+</form>
+
+  
+{% endblock %}

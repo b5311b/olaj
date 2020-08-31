@@ -1,0 +1,45 @@
+{% load widget_tweaks %}
+
+
+{% for field in form %}
+  <div class="form-group">
+    {{ field.label_tag }}
+     
+    {% if form.is_bound %}
+      {% if field.errors %}
+        {% render_field field class="form-control is-invalid" %}
+        {% for error in field.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field field class="form-control is-valid" %}
+      {% endif %}
+    {% else %}
+      {% render_field field class="form-control" %}
+    {% endif %}
+
+    {% if field.help_text %}
+      <small class="form-text text-muted">
+        {{ field.help_text }}
+      </small>
+    {% endif %}
+  </div>
+{% endfor %}
+Jelszó: 
+<input type="radio" onclick="Toggle()" id="hidden" name="pass" value="hidden" checked>
+<label for="hidden">elrejt,</label>
+<input type="radio" onclick="Toggle()" id="visible" name="pass" value="visible">
+<label for="hidden">felfed.</label><br>
+<script>
+    function Toggle() {
+        var temp = document.getElementById("id_password");
+        if (temp.type === "password") {
+        temp.type = "text"; 
+        }
+        else {
+        temp.type = "password";
+        }
+    }
+</script>
